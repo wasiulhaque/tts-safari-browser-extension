@@ -176,34 +176,60 @@ document.head.appendChild(styleSheet);
 
 let isPlaying = false
 let browserText = ""
+let savedSelection;
+let playButton;
+let isPlayButtonVisible = false;
 
 document.addEventListener("mouseup", function () {
     const selectedText = window.getSelection().toString().trim();
     if (selectedText != ""){
-        console.log(selectedText);
-        showPlayButton(selectedText);
-        browserText = selectedText;
+        if (doesContainsBengaliWord(selectedText)){
+            console.log(selectedText);
+            showPlayButton(selectedText);
+            browserText = selectedText;
+            savedSelection = window.getSelection().getRangeAt(0).cloneRange();
+        } else {
+            hidePlayButton();
+        }
+    }
+});
+
+document.addEventListener("click", function (event) {
+    const selectedText = window.getSelection().toString().trim();
+    if (event.target !== playButton && isPlayButtonVisible && selectedText ==="") {
+        hidePlayButton();
     }
 });
 
 function showPlayButton(selectedText) {
-    const buttonDiv = document.createElement("div");
-    buttonDiv.id = "playButton";
-    buttonDiv.innerHTML = isPlaying ? "&#10074;&#10074;" : "&#9658;";
-    document.body.appendChild(buttonDiv);
+    playButton = document.createElement("div");
+    playButton.id = "playButton";
+    playButton.innerHTML = isPlaying ? "&#10074;&#10074;" : "&#9658;";
+    document.body.appendChild(playButton);
+    isPlayButtonVisible = true;
     positionPlayButton();
-    buttonDiv.addEventListener("click", handlePlayButtonClick);
+    playButton.addEventListener("click", handlePlayButtonClick);
+}
+
+function hidePlayButton(){
+    if (playButton) {
+        playButton.remove();
+        isPlayButtonVisible = false;
+    }
 }
 
 function positionPlayButton() {
     const selectedRange = window.getSelection().getRangeAt(0);
     const rect = selectedRange.getBoundingClientRect();
-    const buttonDiv = document.getElementById("playButton");
-    buttonDiv.style.top = rect.top + window.scrollY - 35 + "px";
-    buttonDiv.style.left = rect.left + window.scrollX + "px";
+    playButton = document.getElementById("playButton");
+    playButton.style.top = rect.top + window.scrollY - 35 + "px";
+    playButton.style.left = rect.left + window.scrollX + "px";
 }
 
-function handlePlayButtonClick() {
+async function handlePlayButtonClick() {
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(savedSelection);
+    
     console.log("Play button pressed");
     
     const requestOptions = {
@@ -218,7 +244,7 @@ function handlePlayButtonClick() {
     
     console.log("Here")
     
-    fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions)
+    await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions)
     .then(response => response.blob())
     .then((audioBlob) => {
         console.log("Inside request");
@@ -233,6 +259,13 @@ function handlePlayButtonClick() {
     else {
         console.log("Error sending request");
     }
+    
+    const selectedText = window.getSelection().toString().trim();
+}
+
+function doesContainsBengaliWord(text){
+    const bengaliRegex = /[\u0980-\u09FF]/; // Unicode range
+    return bengaliRegex.test(text);
 }
 
 browser.runtime.sendMessage({ greeting: "hello" }).then((response) => {
