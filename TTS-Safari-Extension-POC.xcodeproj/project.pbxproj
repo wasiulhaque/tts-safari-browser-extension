@@ -1,0 +1,971 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C7FB4E702AEA17BA00E50D24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E6F2AEA17BA00E50D24 /* AppDelegate.swift */; };
+		C7FB4E722AEA17BA00E50D24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E712AEA17BA00E50D24 /* SceneDelegate.swift */; };
+		C7FB4E752AEA17BA00E50D24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E732AEA17BA00E50D24 /* LaunchScreen.storyboard */; };
+		C7FB4E782AEA17BA00E50D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E762AEA17BA00E50D24 /* Main.storyboard */; };
+		C7FB4E812AEA17BA00E50D24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E802AEA17BA00E50D24 /* AppDelegate.swift */; };
+		C7FB4E842AEA17BA00E50D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E822AEA17BA00E50D24 /* Main.storyboard */; };
+		C7FB4E8B2AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C7FB4E8A2AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C7FB4E952AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C7FB4E942AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C7FB4E9B2AEA17BA00E50D24 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E562AEA17B900E50D24 /* Main.html */; };
+		C7FB4E9C2AEA17BA00E50D24 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E562AEA17B900E50D24 /* Main.html */; };
+		C7FB4E9D2AEA17BA00E50D24 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E582AEA17B900E50D24 /* Icon.png */; };
+		C7FB4E9E2AEA17BA00E50D24 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E582AEA17B900E50D24 /* Icon.png */; };
+		C7FB4E9F2AEA17BA00E50D24 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E592AEA17B900E50D24 /* Style.css */; };
+		C7FB4EA02AEA17BA00E50D24 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E592AEA17B900E50D24 /* Style.css */; };
+		C7FB4EA12AEA17BA00E50D24 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E5A2AEA17B900E50D24 /* Script.js */; };
+		C7FB4EA22AEA17BA00E50D24 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E5A2AEA17B900E50D24 /* Script.js */; };
+		C7FB4EA32AEA17BA00E50D24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E5B2AEA17B900E50D24 /* ViewController.swift */; };
+		C7FB4EA42AEA17BA00E50D24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E5B2AEA17B900E50D24 /* ViewController.swift */; };
+		C7FB4EA52AEA17BA00E50D24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E5C2AEA17BA00E50D24 /* Assets.xcassets */; };
+		C7FB4EA62AEA17BA00E50D24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E5C2AEA17BA00E50D24 /* Assets.xcassets */; };
+		C7FB4EA72AEA17BA00E50D24 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E5E2AEA17BA00E50D24 /* SafariWebExtensionHandler.swift */; };
+		C7FB4EA82AEA17BA00E50D24 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E5E2AEA17BA00E50D24 /* SafariWebExtensionHandler.swift */; };
+		C7FB4EA92AEA17BA00E50D24 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E602AEA17BA00E50D24 /* _locales */; };
+		C7FB4EAA2AEA17BA00E50D24 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E602AEA17BA00E50D24 /* _locales */; };
+		C7FB4EAB2AEA17BA00E50D24 /* images in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E612AEA17BA00E50D24 /* images */; };
+		C7FB4EAC2AEA17BA00E50D24 /* images in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E612AEA17BA00E50D24 /* images */; };
+		C7FB4EAD2AEA17BA00E50D24 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E622AEA17BA00E50D24 /* manifest.json */; };
+		C7FB4EAE2AEA17BA00E50D24 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E622AEA17BA00E50D24 /* manifest.json */; };
+		C7FB4EAF2AEA17BA00E50D24 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E632AEA17BA00E50D24 /* background.js */; };
+		C7FB4EB02AEA17BA00E50D24 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E632AEA17BA00E50D24 /* background.js */; };
+		C7FB4EB12AEA17BA00E50D24 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E642AEA17BA00E50D24 /* content.js */; };
+		C7FB4EB22AEA17BA00E50D24 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E642AEA17BA00E50D24 /* content.js */; };
+		C7FB4EB32AEA17BA00E50D24 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E652AEA17BA00E50D24 /* popup.html */; };
+		C7FB4EB42AEA17BA00E50D24 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E652AEA17BA00E50D24 /* popup.html */; };
+		C7FB4EB52AEA17BA00E50D24 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E662AEA17BA00E50D24 /* popup.css */; };
+		C7FB4EB62AEA17BA00E50D24 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E662AEA17BA00E50D24 /* popup.css */; };
+		C7FB4EB72AEA17BA00E50D24 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E672AEA17BA00E50D24 /* popup.js */; };
+		C7FB4EB82AEA17BA00E50D24 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E672AEA17BA00E50D24 /* popup.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C7FB4E8C2AEA17BA00E50D24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7FB4E502AEA17B900E50D24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7FB4E892AEA17BA00E50D24;
+			remoteInfo = "TTS-Safari-Extension-POC Extension (iOS)";
+		};
+		C7FB4E962AEA17BA00E50D24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7FB4E502AEA17B900E50D24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7FB4E932AEA17BA00E50D24;
+			remoteInfo = "TTS-Safari-Extension-POC Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C7FB4EBE2AEA17BA00E50D24 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C7FB4E8B2AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4EC52AEA17BA00E50D24 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C7FB4E952AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C7FB4E572AEA17B900E50D24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		C7FB4E582AEA17B900E50D24 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		C7FB4E592AEA17B900E50D24 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		C7FB4E5A2AEA17B900E50D24 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		C7FB4E5B2AEA17B900E50D24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C7FB4E5C2AEA17BA00E50D24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C7FB4E5E2AEA17BA00E50D24 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		C7FB4E602AEA17BA00E50D24 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
+		C7FB4E612AEA17BA00E50D24 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		C7FB4E622AEA17BA00E50D24 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		C7FB4E632AEA17BA00E50D24 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
+		C7FB4E642AEA17BA00E50D24 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
+		C7FB4E652AEA17BA00E50D24 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
+		C7FB4E662AEA17BA00E50D24 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
+		C7FB4E672AEA17BA00E50D24 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
+		C7FB4E6C2AEA17BA00E50D24 /* TTS-Safari-Extension-POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TTS-Safari-Extension-POC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7FB4E6F2AEA17BA00E50D24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C7FB4E712AEA17BA00E50D24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C7FB4E742AEA17BA00E50D24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C7FB4E772AEA17BA00E50D24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C7FB4E792AEA17BA00E50D24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7FB4E7E2AEA17BA00E50D24 /* TTS-Safari-Extension-POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TTS-Safari-Extension-POC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7FB4E802AEA17BA00E50D24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C7FB4E832AEA17BA00E50D24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C7FB4E852AEA17BA00E50D24 /* TTS-Safari-Extension-POC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TTS-Safari-Extension-POC.entitlements"; sourceTree = "<group>"; };
+		C7FB4E8A2AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TTS-Safari-Extension-POC Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7FB4E8F2AEA17BA00E50D24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7FB4E942AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TTS-Safari-Extension-POC Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7FB4E992AEA17BA00E50D24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7FB4E9A2AEA17BA00E50D24 /* TTS-Safari-Extension-POC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TTS-Safari-Extension-POC.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C7FB4E692AEA17BA00E50D24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E7B2AEA17BA00E50D24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E872AEA17BA00E50D24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E912AEA17BA00E50D24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C7FB4E4F2AEA17B900E50D24 = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E542AEA17B900E50D24 /* Shared (App) */,
+				C7FB4E5D2AEA17BA00E50D24 /* Shared (Extension) */,
+				C7FB4E6E2AEA17BA00E50D24 /* iOS (App) */,
+				C7FB4E7F2AEA17BA00E50D24 /* macOS (App) */,
+				C7FB4E8E2AEA17BA00E50D24 /* iOS (Extension) */,
+				C7FB4E982AEA17BA00E50D24 /* macOS (Extension) */,
+				C7FB4E6D2AEA17BA00E50D24 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C7FB4E542AEA17B900E50D24 /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E5B2AEA17B900E50D24 /* ViewController.swift */,
+				C7FB4E5C2AEA17BA00E50D24 /* Assets.xcassets */,
+				C7FB4E552AEA17B900E50D24 /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		C7FB4E552AEA17B900E50D24 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E562AEA17B900E50D24 /* Main.html */,
+				C7FB4E582AEA17B900E50D24 /* Icon.png */,
+				C7FB4E592AEA17B900E50D24 /* Style.css */,
+				C7FB4E5A2AEA17B900E50D24 /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C7FB4E5D2AEA17BA00E50D24 /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E5E2AEA17BA00E50D24 /* SafariWebExtensionHandler.swift */,
+				C7FB4E5F2AEA17BA00E50D24 /* Resources */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		C7FB4E5F2AEA17BA00E50D24 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E602AEA17BA00E50D24 /* _locales */,
+				C7FB4E612AEA17BA00E50D24 /* images */,
+				C7FB4E622AEA17BA00E50D24 /* manifest.json */,
+				C7FB4E632AEA17BA00E50D24 /* background.js */,
+				C7FB4E642AEA17BA00E50D24 /* content.js */,
+				C7FB4E652AEA17BA00E50D24 /* popup.html */,
+				C7FB4E662AEA17BA00E50D24 /* popup.css */,
+				C7FB4E672AEA17BA00E50D24 /* popup.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C7FB4E6D2AEA17BA00E50D24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E6C2AEA17BA00E50D24 /* TTS-Safari-Extension-POC.app */,
+				C7FB4E7E2AEA17BA00E50D24 /* TTS-Safari-Extension-POC.app */,
+				C7FB4E8A2AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex */,
+				C7FB4E942AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C7FB4E6E2AEA17BA00E50D24 /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E6F2AEA17BA00E50D24 /* AppDelegate.swift */,
+				C7FB4E712AEA17BA00E50D24 /* SceneDelegate.swift */,
+				C7FB4E732AEA17BA00E50D24 /* LaunchScreen.storyboard */,
+				C7FB4E762AEA17BA00E50D24 /* Main.storyboard */,
+				C7FB4E792AEA17BA00E50D24 /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		C7FB4E7F2AEA17BA00E50D24 /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E802AEA17BA00E50D24 /* AppDelegate.swift */,
+				C7FB4E822AEA17BA00E50D24 /* Main.storyboard */,
+				C7FB4E852AEA17BA00E50D24 /* TTS-Safari-Extension-POC.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		C7FB4E8E2AEA17BA00E50D24 /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E8F2AEA17BA00E50D24 /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		C7FB4E982AEA17BA00E50D24 /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				C7FB4E992AEA17BA00E50D24 /* Info.plist */,
+				C7FB4E9A2AEA17BA00E50D24 /* TTS-Safari-Extension-POC.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C7FB4E6B2AEA17BA00E50D24 /* TTS-Safari-Extension-POC (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7FB4EBF2AEA17BA00E50D24 /* Build configuration list for PBXNativeTarget "TTS-Safari-Extension-POC (iOS)" */;
+			buildPhases = (
+				C7FB4E682AEA17BA00E50D24 /* Sources */,
+				C7FB4E692AEA17BA00E50D24 /* Frameworks */,
+				C7FB4E6A2AEA17BA00E50D24 /* Resources */,
+				C7FB4EBE2AEA17BA00E50D24 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7FB4E8D2AEA17BA00E50D24 /* PBXTargetDependency */,
+			);
+			name = "TTS-Safari-Extension-POC (iOS)";
+			productName = "TTS-Safari-Extension-POC (iOS)";
+			productReference = C7FB4E6C2AEA17BA00E50D24 /* TTS-Safari-Extension-POC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C7FB4E7D2AEA17BA00E50D24 /* TTS-Safari-Extension-POC (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7FB4EC62AEA17BA00E50D24 /* Build configuration list for PBXNativeTarget "TTS-Safari-Extension-POC (macOS)" */;
+			buildPhases = (
+				C7FB4E7A2AEA17BA00E50D24 /* Sources */,
+				C7FB4E7B2AEA17BA00E50D24 /* Frameworks */,
+				C7FB4E7C2AEA17BA00E50D24 /* Resources */,
+				C7FB4EC52AEA17BA00E50D24 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7FB4E972AEA17BA00E50D24 /* PBXTargetDependency */,
+			);
+			name = "TTS-Safari-Extension-POC (macOS)";
+			productName = "TTS-Safari-Extension-POC (macOS)";
+			productReference = C7FB4E7E2AEA17BA00E50D24 /* TTS-Safari-Extension-POC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C7FB4E892AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7FB4EBB2AEA17BA00E50D24 /* Build configuration list for PBXNativeTarget "TTS-Safari-Extension-POC Extension (iOS)" */;
+			buildPhases = (
+				C7FB4E862AEA17BA00E50D24 /* Sources */,
+				C7FB4E872AEA17BA00E50D24 /* Frameworks */,
+				C7FB4E882AEA17BA00E50D24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TTS-Safari-Extension-POC Extension (iOS)";
+			productName = "TTS-Safari-Extension-POC Extension (iOS)";
+			productReference = C7FB4E8A2AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C7FB4E932AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7FB4EC22AEA17BA00E50D24 /* Build configuration list for PBXNativeTarget "TTS-Safari-Extension-POC Extension (macOS)" */;
+			buildPhases = (
+				C7FB4E902AEA17BA00E50D24 /* Sources */,
+				C7FB4E912AEA17BA00E50D24 /* Frameworks */,
+				C7FB4E922AEA17BA00E50D24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TTS-Safari-Extension-POC Extension (macOS)";
+			productName = "TTS-Safari-Extension-POC Extension (macOS)";
+			productReference = C7FB4E942AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C7FB4E502AEA17B900E50D24 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					C7FB4E6B2AEA17BA00E50D24 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C7FB4E7D2AEA17BA00E50D24 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C7FB4E892AEA17BA00E50D24 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C7FB4E932AEA17BA00E50D24 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = C7FB4E532AEA17B900E50D24 /* Build configuration list for PBXProject "TTS-Safari-Extension-POC" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C7FB4E4F2AEA17B900E50D24;
+			productRefGroup = C7FB4E6D2AEA17BA00E50D24 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C7FB4E6B2AEA17BA00E50D24 /* TTS-Safari-Extension-POC (iOS) */,
+				C7FB4E7D2AEA17BA00E50D24 /* TTS-Safari-Extension-POC (macOS) */,
+				C7FB4E892AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension (iOS) */,
+				C7FB4E932AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C7FB4E6A2AEA17BA00E50D24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FB4E9D2AEA17BA00E50D24 /* Icon.png in Resources */,
+				C7FB4E752AEA17BA00E50D24 /* LaunchScreen.storyboard in Resources */,
+				C7FB4E9B2AEA17BA00E50D24 /* Main.html in Resources */,
+				C7FB4EA12AEA17BA00E50D24 /* Script.js in Resources */,
+				C7FB4EA52AEA17BA00E50D24 /* Assets.xcassets in Resources */,
+				C7FB4E782AEA17BA00E50D24 /* Main.storyboard in Resources */,
+				C7FB4E9F2AEA17BA00E50D24 /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E7C2AEA17BA00E50D24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FB4E9E2AEA17BA00E50D24 /* Icon.png in Resources */,
+				C7FB4EA02AEA17BA00E50D24 /* Style.css in Resources */,
+				C7FB4E842AEA17BA00E50D24 /* Main.storyboard in Resources */,
+				C7FB4EA22AEA17BA00E50D24 /* Script.js in Resources */,
+				C7FB4EA62AEA17BA00E50D24 /* Assets.xcassets in Resources */,
+				C7FB4E9C2AEA17BA00E50D24 /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E882AEA17BA00E50D24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FB4EAF2AEA17BA00E50D24 /* background.js in Resources */,
+				C7FB4EB52AEA17BA00E50D24 /* popup.css in Resources */,
+				C7FB4EB32AEA17BA00E50D24 /* popup.html in Resources */,
+				C7FB4EAB2AEA17BA00E50D24 /* images in Resources */,
+				C7FB4EAD2AEA17BA00E50D24 /* manifest.json in Resources */,
+				C7FB4EA92AEA17BA00E50D24 /* _locales in Resources */,
+				C7FB4EB12AEA17BA00E50D24 /* content.js in Resources */,
+				C7FB4EB72AEA17BA00E50D24 /* popup.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E922AEA17BA00E50D24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FB4EB02AEA17BA00E50D24 /* background.js in Resources */,
+				C7FB4EB62AEA17BA00E50D24 /* popup.css in Resources */,
+				C7FB4EB42AEA17BA00E50D24 /* popup.html in Resources */,
+				C7FB4EAC2AEA17BA00E50D24 /* images in Resources */,
+				C7FB4EAE2AEA17BA00E50D24 /* manifest.json in Resources */,
+				C7FB4EAA2AEA17BA00E50D24 /* _locales in Resources */,
+				C7FB4EB22AEA17BA00E50D24 /* content.js in Resources */,
+				C7FB4EB82AEA17BA00E50D24 /* popup.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C7FB4E682AEA17BA00E50D24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FB4EA32AEA17BA00E50D24 /* ViewController.swift in Sources */,
+				C7FB4E702AEA17BA00E50D24 /* AppDelegate.swift in Sources */,
+				C7FB4E722AEA17BA00E50D24 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E7A2AEA17BA00E50D24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FB4EA42AEA17BA00E50D24 /* ViewController.swift in Sources */,
+				C7FB4E812AEA17BA00E50D24 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E862AEA17BA00E50D24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FB4EA72AEA17BA00E50D24 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FB4E902AEA17BA00E50D24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FB4EA82AEA17BA00E50D24 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C7FB4E8D2AEA17BA00E50D24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7FB4E892AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension (iOS) */;
+			targetProxy = C7FB4E8C2AEA17BA00E50D24 /* PBXContainerItemProxy */;
+		};
+		C7FB4E972AEA17BA00E50D24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7FB4E932AEA17BA00E50D24 /* TTS-Safari-Extension-POC Extension (macOS) */;
+			targetProxy = C7FB4E962AEA17BA00E50D24 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C7FB4E562AEA17B900E50D24 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7FB4E572AEA17B900E50D24 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		C7FB4E732AEA17BA00E50D24 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7FB4E742AEA17BA00E50D24 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C7FB4E762AEA17BA00E50D24 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7FB4E772AEA17BA00E50D24 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C7FB4E822AEA17BA00E50D24 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7FB4E832AEA17BA00E50D24 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C7FB4EB92AEA17BA00E50D24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C7FB4EBA2AEA17BA00E50D24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		C7FB4EBC2AEA17BA00E50D24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GNC9ALL99U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Reve.TTS-Safari-Extension-POC.Extension";
+				PRODUCT_NAME = "TTS-Safari-Extension-POC Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C7FB4EBD2AEA17BA00E50D24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GNC9ALL99U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Reve.TTS-Safari-Extension-POC.Extension";
+				PRODUCT_NAME = "TTS-Safari-Extension-POC Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C7FB4EC02AEA17BA00E50D24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GNC9ALL99U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Reve.TTS-Safari-Extension-POC";
+				PRODUCT_NAME = "TTS-Safari-Extension-POC";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C7FB4EC12AEA17BA00E50D24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GNC9ALL99U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Reve.TTS-Safari-Extension-POC";
+				PRODUCT_NAME = "TTS-Safari-Extension-POC";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C7FB4EC32AEA17BA00E50D24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/TTS-Safari-Extension-POC.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GNC9ALL99U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Reve.TTS-Safari-Extension-POC.Extension";
+				PRODUCT_NAME = "TTS-Safari-Extension-POC Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C7FB4EC42AEA17BA00E50D24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/TTS-Safari-Extension-POC.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GNC9ALL99U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Reve.TTS-Safari-Extension-POC.Extension";
+				PRODUCT_NAME = "TTS-Safari-Extension-POC Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C7FB4EC72AEA17BA00E50D24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/TTS-Safari-Extension-POC.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GNC9ALL99U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Reve.TTS-Safari-Extension-POC";
+				PRODUCT_NAME = "TTS-Safari-Extension-POC";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C7FB4EC82AEA17BA00E50D24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/TTS-Safari-Extension-POC.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GNC9ALL99U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Reve.TTS-Safari-Extension-POC";
+				PRODUCT_NAME = "TTS-Safari-Extension-POC";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C7FB4E532AEA17B900E50D24 /* Build configuration list for PBXProject "TTS-Safari-Extension-POC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7FB4EB92AEA17BA00E50D24 /* Debug */,
+				C7FB4EBA2AEA17BA00E50D24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7FB4EBB2AEA17BA00E50D24 /* Build configuration list for PBXNativeTarget "TTS-Safari-Extension-POC Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7FB4EBC2AEA17BA00E50D24 /* Debug */,
+				C7FB4EBD2AEA17BA00E50D24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7FB4EBF2AEA17BA00E50D24 /* Build configuration list for PBXNativeTarget "TTS-Safari-Extension-POC (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7FB4EC02AEA17BA00E50D24 /* Debug */,
+				C7FB4EC12AEA17BA00E50D24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7FB4EC22AEA17BA00E50D24 /* Build configuration list for PBXNativeTarget "TTS-Safari-Extension-POC Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7FB4EC32AEA17BA00E50D24 /* Debug */,
+				C7FB4EC42AEA17BA00E50D24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7FB4EC62AEA17BA00E50D24 /* Build configuration list for PBXNativeTarget "TTS-Safari-Extension-POC (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7FB4EC72AEA17BA00E50D24 /* Debug */,
+				C7FB4EC82AEA17BA00E50D24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C7FB4E502AEA17B900E50D24 /* Project object */;
+}
