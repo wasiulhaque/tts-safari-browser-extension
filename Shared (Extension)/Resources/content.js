@@ -177,8 +177,14 @@ document.head.appendChild(styleSheet);
 let isPlaying = false
 let browserText = ""
 let savedSelection;
+
 let playButton;
+let settingsButton;
+let popUpMenu;
+
 let isPlayButtonVisible = false;
+let isSettingsButtonVisible = false;
+let isPopUpMenuVisible = false;
 
 document.addEventListener("mouseup", function () {
     const selectedText = window.getSelection().toString().trim();
@@ -186,17 +192,26 @@ document.addEventListener("mouseup", function () {
         if (doesContainsBengaliWord(selectedText)){
             console.log(selectedText);
             showPlayButton(selectedText);
+            showSettingsButton();
             browserText = selectedText;
             savedSelection = window.getSelection().getRangeAt(0).cloneRange();
         } else {
             hidePlayButton();
+            hideSettingsButton();
         }
     }
 });
 
 document.addEventListener("click", function (event) {
     const selectedText = window.getSelection().toString().trim();
-    if (event.target !== playButton && isPlayButtonVisible && selectedText ==="") {
+    if (event.target !== playButton && event.target !== settingsButton && isSettingsButtonVisible && isPlayButtonVisible && selectedText ==="") {
+        hidePlayButton();
+        hideSettingsButton();
+    }
+    if (!isPlayButtonVisible) {
+        hideSettingsButton();
+    }
+    if (!isSettingsButtonVisible) {
         hidePlayButton();
     }
 });
@@ -211,10 +226,80 @@ function showPlayButton(selectedText) {
     playButton.addEventListener("click", handlePlayButtonClick);
 }
 
-function hidePlayButton(){
+function showSettingsButton() {
+    settingsButton = document.createElement("div");
+    settingsButton.id = "settingsButton";
+    settingsButton.innerHTML = "&#9881";
+    document.body.appendChild(settingsButton);
+    isSettingsButtonVisible = true;
+    positionSettingsButton();
+    settingsButton.addEventListener("click", handleSettingsButtonClick);
+}
+
+function showPopUpMenu() {
+    console.log("Inside here");
+    popUpMenu = document.createElement("div");
+    popUpMenu.id = "popUpMenu";
+    popUpMenu.innerHTML = `
+  <h2> কণ্ঠ </h2>
+  
+  <label class="toggle">
+    <span class="toggle-label">পুরুষ </span>
+    <input class="toggle-checkbox" type="checkbox" "checked"
+    id="genderCheckbox">
+    <div class="toggle-switch"></div>
+    <span class="toggle-label">নারী </span>
+  </label>
+  
+  <hr>
+  
+  <div class="dropdown">
+    <button class="dropbtn">গতি </button>
+    <div class="dropdown-content">
+      <a>-২x</a>
+      <a>-১x</a>
+      <a>0x</a>
+      <a>১x</a>
+      <a>২x</a>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="dropdown">
+    <button class="dropbtn">পিচ </button>
+    <div class="dropdown-content">
+      <a>-২x</a>
+      <a>-১x</a>
+      <a>0x</a>
+      <a>১x</a>
+      <a>২x</a>
+    </div>
+  </div>
+`;
+    document.body.appendChild(popUpMenu);
+    isPopUpMenuVisible = true;
+    positionPopUpMenu();
+}
+
+function hidePlayButton() {
     if (playButton) {
         playButton.remove();
         isPlayButtonVisible = false;
+    }
+}
+
+function hideSettingsButton() {
+    if (settingsButton) {
+        settingsButton.remove();
+        isSettingsButtonVisible = false;
+    }
+}
+
+function hidePopUpMenu() {
+    if (popUpMenu) {
+        popUpMenu.remove();
+        isPopUpMenuVisible = false;
     }
 }
 
@@ -226,6 +311,21 @@ function positionPlayButton() {
     playButton.style.left = rect.left + window.scrollX + "px";
 }
 
+function positionSettingsButton() {
+    const selectedRange = window.getSelection().getRangeAt(0);
+    const rect = selectedRange.getBoundingClientRect();
+    settingsButton.style.top = rect.top + window.scrollY - 25 + "px";
+    settingsButton.style.left = rect.left + window.scrollX + 35 + "px";
+}
+
+function positionPopUpMenu() {
+    const selectedRange = window.getSelection().getRangeAt(0);
+    const rect = selectedRange.getBoundingClientRect();
+    popUpMenu.style.top = rect.top + window.scrollY - 35 + "px";
+    popUpMenu.style.left = rect.left + window.scrollX + 70 + "px";
+}
+
+// Button handlers
 async function handlePlayButtonClick() {
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(savedSelection);
@@ -242,12 +342,9 @@ async function handlePlayButtonClick() {
         }),
     };
     
-    console.log("Here")
-    
     await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions)
     .then(response => response.blob())
     .then((audioBlob) => {
-        console.log("Inside request");
         const blobURL = URL.createObjectURL(audioBlob);
         const audioElement = new Audio(blobURL);
         audioElement.play();
@@ -261,6 +358,16 @@ async function handlePlayButtonClick() {
     }
     
     const selectedText = window.getSelection().toString().trim();
+}
+
+function handleSettingsButtonClick() {
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(savedSelection);
+//    if (isPopUpMenuVisible) {
+//        hidePopUpMenu();
+//    } else {
+//        showPopUpMenu();
+//    }
 }
 
 function doesContainsBengaliWord(text){
