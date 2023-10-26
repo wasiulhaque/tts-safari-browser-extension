@@ -174,6 +174,9 @@ styleSheet.type = "text/css";
 styleSheet.innerText = styles;
 document.head.appendChild(styleSheet);
 
+// Global Variables
+const MAX_WORD_COUNT = 20
+
 let isPlaying = false
 let browserText = ""
 let savedSelection;
@@ -185,6 +188,11 @@ let popUpMenu;
 let isPlayButtonVisible = false;
 let isSettingsButtonVisible = false;
 let isPopUpMenuVisible = false;
+
+let responseAudios = [];
+let playing = false;
+let finishedPlaying = false;
+let playerIndex = 0;
 
 document.addEventListener("mouseup", function () {
     const selectedText = window.getSelection().toString().trim();
@@ -327,37 +335,23 @@ function positionPopUpMenu() {
 
 // Button handlers
 async function handlePlayButtonClick() {
+    resetVariables();
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(savedSelection);
     
     console.log("Play button pressed");
     
-    const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            module: "backend_tts",
-            submodule: "infer",
-            text: browserText,
-        }),
-    };
+    await sendAndRecieveEachChunk();
     
-    await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions)
-    .then(response => response.blob())
-    .then((audioBlob) => {
-        const blobURL = URL.createObjectURL(audioBlob);
-        const audioElement = new Audio(blobURL);
-        audioElement.play();
-    })
-    .catch((error) => console.error("Error: ", error));
-    if (response.ok) {
-        console.log("Recieved response");
+    if (responseAudios !== null){
+        let playerIndex = 0
+        for (playerIndex = 0; playerIndex < responseAudios.length; playerIndex++) {
+                await new Promise((resolve) => {
+                  responseAudios[playerIndex].onended = resolve;
+                  responseAudios[playerIndex].play();
+                });
+              }
     }
-    else {
-        console.log("Error sending request");
-    }
-    
-    const selectedText = window.getSelection().toString().trim();
 }
 
 function handleSettingsButtonClick() {
@@ -373,6 +367,97 @@ function handleSettingsButtonClick() {
 function doesContainsBengaliWord(text){
     const bengaliRegex = /[\u0980-\u09FF]/; // Unicode range
     return bengaliRegex.test(text);
+}
+
+
+// String operations
+function chunkifyText(text){
+    return text.split(/[\r\n।?!,;—:’‘]+/gi).filter((token) => token.trim() != "");
+}
+
+const splitLongWords = (words, maxWords) => {
+  const wordChunks = [];
+  let currentWordChunk = "";
+
+  for (const word of words) {
+    if ((currentWordChunk + word).split(" ").length <= maxWords) {
+      currentWordChunk += word + " ";
+    } else {
+      if (currentWordChunk !== "") {
+        wordChunks.push(currentWordChunk.trim());
+        currentWordChunk = "";
+      }
+      wordChunks.push(word);
+    }
+  }
+
+  if (currentWordChunk !== "") {
+    wordChunks.push(currentWordChunk.trim());
+  }
+  return wordChunks;
+};
+
+const sendAndRecieveEachChunk = async() => {
+    let chunks = chunkifyText(browserText);
+    for (const chunk of chunks){
+        const words = chunk.trim().split(" ");
+        console.log(words.length);
+        
+        if (words.length > MAX_WORD_COUNT) {
+            const wordChunks = splitLongWords(words, MAX_WORD_COUNT);
+            for (const wordChunk of wordChunks) {
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        module: "backend_tts",
+                        submodule: "infer",
+                        text: wordChunk,
+                    }),
+                };
+                try {
+                    const audioBlob = await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions).then(response => response.blob());
+                    if (audioBlob) {
+                        const blobURL = URL.createObjectURL(await audioBlob);
+                        const audioElement = new Audio(await blobURL);
+                        responseAudios.push(audioElement);
+                        console.log(`Received response for ${wordChunk}`);
+                    } else {
+                        console.log("Error: No audio data received");
+                    }
+                } catch (error) {
+                    console.error("Error: ", error);
+                }
+            }
+        } else {
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    module: "backend_tts",
+                    submodule: "infer",
+                    text: chunk,
+                }),
+            };
+            try {
+                const audioBlob = await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions).then(response => response.blob());
+                if (audioBlob) {
+                    const blobURL = URL.createObjectURL(await audioBlob);
+                    const audioElement = new Audio(await blobURL);
+                    responseAudios.push(audioElement);
+                    console.log(`Received response for ${chunk}`);
+                } else {
+                    console.log("Error: No audio data received");
+                }
+            } catch (error) {
+                console.error("Error: ", error);
+            }
+        }
+    }
+}
+
+function resetVariables(){
+    responseAudios = [];
 }
 
 browser.runtime.sendMessage({ greeting: "hello" }).then((response) => {
