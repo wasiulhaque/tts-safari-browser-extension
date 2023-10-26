@@ -189,7 +189,7 @@ let isPlayButtonVisible = false;
 let isSettingsButtonVisible = false;
 let isPopUpMenuVisible = false;
 
-let responseAudios = [];
+let responseAudios = {};
 let playing = false;
 let finishedPlaying = false;
 let playerIndex = 0;
@@ -342,16 +342,6 @@ async function handlePlayButtonClick() {
     console.log("Play button pressed");
     
     await sendAndRecieveEachChunk();
-    
-    if (responseAudios !== null){
-        let playerIndex = 0
-        for (playerIndex = 0; playerIndex < responseAudios.length; playerIndex++) {
-                await new Promise((resolve) => {
-                  responseAudios[playerIndex].onended = resolve;
-                  responseAudios[playerIndex].play();
-                });
-              }
-    }
 }
 
 function handleSettingsButtonClick() {
@@ -399,7 +389,8 @@ const splitLongWords = (words, maxWords) => {
 
 const sendAndRecieveEachChunk = async() => {
     let chunks = chunkifyText(browserText);
-    for (const chunk of chunks){
+    let index = 0;
+    for (const [chunk_index, chunk] of chunks.entries()){
         const words = chunk.trim().split(" ");
         console.log(words.length);
         
@@ -420,14 +411,18 @@ const sendAndRecieveEachChunk = async() => {
                     if (audioBlob) {
                         const blobURL = URL.createObjectURL(await audioBlob);
                         const audioElement = new Audio(await blobURL);
-                        responseAudios.push(audioElement);
-                        console.log(`Received response for ${wordChunk}`);
+                        responseAudios[chunk_index + index] = audioElement;
+                        console.log(`Received response for ${chunk_index + index}`);
+                        if (index + chunk_index == 0){
+                            triggerPlayback();
+                        }
                     } else {
                         console.log("Error: No audio data received");
                     }
                 } catch (error) {
                     console.error("Error: ", error);
                 }
+                index = index + 1;
             }
         } else {
             const requestOptions = {
@@ -444,8 +439,11 @@ const sendAndRecieveEachChunk = async() => {
                 if (audioBlob) {
                     const blobURL = URL.createObjectURL(await audioBlob);
                     const audioElement = new Audio(await blobURL);
-                    responseAudios.push(audioElement);
-                    console.log(`Received response for ${chunk}`);
+                    responseAudios[chunk_index + index] = audioElement;
+                    console.log(`Received response for ${chunk_index + index}`);
+                    if (index + chunk_index == 0){
+                        triggerPlayback();
+                    }
                 } else {
                     console.log("Error: No audio data received");
                 }
@@ -458,6 +456,18 @@ const sendAndRecieveEachChunk = async() => {
 
 function resetVariables(){
     responseAudios = [];
+}
+
+async function triggerPlayback(){
+    if (responseAudios !== null){
+        let playerIndex = 0
+        for (playerIndex = 0; playerIndex < responseAudios.length; playerIndex++) {
+                await new Promise((resolve) => {
+                  responseAudios[playerIndex].onended = resolve;
+                  responseAudios[playerIndex].play();
+                });
+              }
+    }
 }
 
 browser.runtime.sendMessage({ greeting: "hello" }).then((response) => {
