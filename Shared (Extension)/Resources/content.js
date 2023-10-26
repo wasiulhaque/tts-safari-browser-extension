@@ -175,12 +175,14 @@ styleSheet.innerText = styles;
 document.head.appendChild(styleSheet);
 
 let isPlaying = false
+let browserText = ""
 
 document.addEventListener("mouseup", function () {
     const selectedText = window.getSelection().toString().trim();
     if (selectedText != ""){
         console.log(selectedText);
         showPlayButton(selectedText);
+        browserText = selectedText;
     }
 });
 
@@ -190,6 +192,7 @@ function showPlayButton(selectedText) {
     buttonDiv.innerHTML = isPlaying ? "&#10074;&#10074;" : "&#9658;";
     document.body.appendChild(buttonDiv);
     positionPlayButton();
+    buttonDiv.addEventListener("click", handlePlayButtonClick);
 }
 
 function positionPlayButton() {
@@ -198,6 +201,38 @@ function positionPlayButton() {
     const buttonDiv = document.getElementById("playButton");
     buttonDiv.style.top = rect.top + window.scrollY - 35 + "px";
     buttonDiv.style.left = rect.left + window.scrollX + "px";
+}
+
+function handlePlayButtonClick() {
+    console.log("Play button pressed");
+    
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            module: "backend_tts",
+            submodule: "infer",
+            text: browserText,
+        }),
+    };
+    
+    console.log("Here")
+    
+    fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions)
+    .then(response => response.blob())
+    .then((audioBlob) => {
+        console.log("Inside request");
+        const blobURL = URL.createObjectURL(audioBlob);
+        const audioElement = new Audio(blobURL);
+        audioElement.play();
+    })
+    .catch((error) => console.error("Error: ", error));
+    if (response.ok) {
+        console.log("Recieved response");
+    }
+    else {
+        console.log("Error sending request");
+    }
 }
 
 browser.runtime.sendMessage({ greeting: "hello" }).then((response) => {
