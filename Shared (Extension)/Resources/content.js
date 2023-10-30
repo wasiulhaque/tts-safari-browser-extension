@@ -184,6 +184,8 @@ let savedSelection;
 let playButton;
 let settingsButton;
 let popUpMenu;
+let backdrop;
+let progressBar;
 
 let isPlayButtonVisible = false;
 let isSettingsButtonVisible = false;
@@ -218,9 +220,6 @@ document.addEventListener("click", function (event) {
     }
     if (!isPlayButtonVisible) {
         hideSettingsButton();
-    }
-    if (!isSettingsButtonVisible) {
-        hidePlayButton();
     }
 });
 
@@ -290,6 +289,22 @@ function showPopUpMenu() {
     positionPopUpMenu();
 }
 
+function showBackdrop() {
+    backdrop = document.createElement("div");
+    backdrop.id = "backdropId";
+    backdrop.style.position = "fixed";
+    backdrop.style.top = "0";
+    backdrop.style.left = "0";
+    backdrop.style.width = "100%";
+    backdrop.style.height = "100%";
+    backdrop.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    backdrop.style.zIndex = "9999";
+    progressBar = document.createElement("div");
+    progressBar.className = "progress-bar";
+    backdrop.appendChild(progressBar);
+    document.body.appendChild(backdrop);
+}
+
 function hidePlayButton() {
     if (playButton) {
         playButton.remove();
@@ -309,6 +324,10 @@ function hidePopUpMenu() {
         popUpMenu.remove();
         isPopUpMenuVisible = false;
     }
+}
+
+function hideBackDrop() {
+    document.getElementById("backdropId").remove();
 }
 
 function positionPlayButton() {
@@ -388,6 +407,7 @@ const splitLongWords = (words, maxWords) => {
 };
 
 const sendAndRecieveEachChunk = async() => {
+    showBackdrop();
     let chunks = chunkifyText(browserText);
     let index = 0;
     for (const [chunk_index, chunk] of chunks.entries()){
@@ -414,6 +434,7 @@ const sendAndRecieveEachChunk = async() => {
                         responseAudios[chunk_index + index] = audioElement;
                         console.log(`Received response for ${chunk_index + index}`);
                         if (index + chunk_index == 0){
+                            hideBackDrop();
                             triggerPlayback();
                         }
                     } else {
@@ -442,6 +463,7 @@ const sendAndRecieveEachChunk = async() => {
                     responseAudios[chunk_index + index] = audioElement;
                     console.log(`Received response for ${chunk_index + index}`);
                     if (index + chunk_index == 0){
+                        hideBackDrop();
                         triggerPlayback();
                     }
                 } else {
@@ -449,6 +471,8 @@ const sendAndRecieveEachChunk = async() => {
                 }
             } catch (error) {
                 console.error("Error: ", error);
+                hideBackDrop();
+                resetVariables();
             }
         }
     }
@@ -464,9 +488,19 @@ async function triggerPlayback(){
         for (playerIndex = 0; playerIndex < responseAudios.length; playerIndex++) {
                 await new Promise((resolve) => {
                   responseAudios[playerIndex].onended = resolve;
+                    isPlaying = true;
+                    document.getElementById("playButton").innerHTML = "&#10074;&#10074;";
                   responseAudios[playerIndex].play();
                 });
               }
+        isPlaying = false;
+        document.getElementById("playButton").innerHTML = "&#9658;";
+    }
+}
+
+function pauseAllAudio() {
+    for (const audioElement of responseAudios) {
+        audioElement.pause();
     }
 }
 
