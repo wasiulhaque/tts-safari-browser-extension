@@ -175,11 +175,14 @@ styleSheet.innerText = styles;
 document.head.appendChild(styleSheet);
 
 // Global Variables
-const MAX_WORD_COUNT = 20
+const MAX_WORD_COUNT = 20;
 
-let isPlaying = false
-let browserText = ""
+let isPlaying = false;
+let browserText = "";
 let savedSelection;
+let prevText = "";
+let selectedText;
+let userText;
 
 let playButton;
 let settingsButton;
@@ -197,10 +200,22 @@ let playing = false;
 let finishedPlaying = false;
 let playerIndex = 0;
 
+//const abortController = new AbortController();
+//const signal = abortController.signal;
+//const responseTimer = setTimeout(() => {
+//    abortController.abort();
+//    hideBackDrop();
+//    stopAllAudio();
+//    resetVariables();
+//    prevText = "";
+//    console.log("Error: No response received for the first chunk within 15 seconds");
+//}, 15000);
+
 document.addEventListener("mouseup", function () {
-    const selectedText = window.getSelection().toString().trim();
+    selectedText = window.getSelection().toString().trim();
     if (selectedText != ""){
         if (doesContainsBengaliWord(selectedText)){
+            userText = selectedText;
             console.log(selectedText);
             showPlayButton(selectedText);
             showSettingsButton();
@@ -218,9 +233,7 @@ document.addEventListener("click", function (event) {
     if (event.target !== playButton && event.target !== settingsButton && isSettingsButtonVisible && isPlayButtonVisible && selectedText ==="") {
         hidePlayButton();
         hideSettingsButton();
-    }
-    if (!isPlayButtonVisible) {
-        hideSettingsButton();
+        stopAllAudio();
     }
 });
 
@@ -355,9 +368,18 @@ function positionPopUpMenu() {
 
 // Button handlers
 async function handlePlayButtonClick() {
-    if(isPlaying == false && isPlayedOnce == false) {
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(savedSelection);
+    let currentText = userText;
+    
+//    console.log("Current: " + currentText)
+//    console.log("Previous: " + prevText)
+    
+    if(isPlaying == false && currentText != prevText) {
         isPlayedOnce = true;
         resetVariables();
+        prevText = currentText;
+        
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(savedSelection);
         
@@ -365,12 +387,12 @@ async function handlePlayButtonClick() {
         
         await sendAndRecieveEachChunk();
     }
-    else if (isPlaying == true && isPlayedOnce == true) {
+    else if (isPlaying == true && isPlayedOnce == true && prevText == currentText) {
         pauseAllAudio();
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(savedSelection);
     }
-    else if (isPlaying == false && isPlayedOnce == true) {
+    else if (isPlaying == false && isPlayedOnce == true && prevText == currentText) {
         triggerPlayback();
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(savedSelection);
@@ -442,12 +464,14 @@ const sendAndRecieveEachChunk = async() => {
                 };
                 try {
                     const audioBlob = await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions).then(response => response.blob());
+                    
                     if (audioBlob) {
                         const blobURL = URL.createObjectURL(await audioBlob);
                         const audioElement = new Audio(await blobURL);
                         responseAudios[chunk_index + index] = audioElement;
                         console.log(`Received response for ${chunk_index + index}`);
                         if (index + chunk_index == 0){
+                            //clearTimeout(responseTimer);
                             hideBackDrop();
                             triggerPlayback();
                         }
@@ -471,12 +495,14 @@ const sendAndRecieveEachChunk = async() => {
             };
             try {
                 const audioBlob = await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions).then(response => response.blob());
+                
                 if (audioBlob) {
                     const blobURL = URL.createObjectURL(await audioBlob);
                     const audioElement = new Audio(await blobURL);
                     responseAudios[chunk_index + index] = audioElement;
                     console.log(`Received response for ${chunk_index + index}`);
                     if (index + chunk_index == 0){
+                        //clearTimeout(responseTimer);
                         hideBackDrop();
                         triggerPlayback();
                     }
@@ -509,6 +535,7 @@ async function triggerPlayback(){
               }
         isPlaying = false;
         isPlayedOnce = false;
+        prevText = "";
         document.getElementById("playButton").innerHTML = "&#9658;";
     }
 }
@@ -519,6 +546,18 @@ function pauseAllAudio() {
     for (const audioElement of responseAudios) {
         audioElement.pause();
     }
+}
+
+function stopAllAudio() {
+    isPlaying = false;
+    playButton.innerHTML = "&#9658;";
+    for (const audioElement of responseAudios) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+        playerIndex = 0;
+    }
+    prevText = "";
+    resetVariables();
 }
 
 browser.runtime.sendMessage({ greeting: "hello" }).then((response) => {
