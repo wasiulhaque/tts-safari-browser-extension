@@ -190,6 +190,7 @@ let progressBar;
 let isPlayButtonVisible = false;
 let isSettingsButtonVisible = false;
 let isPopUpMenuVisible = false;
+let isPlayedOnce = false;
 
 let responseAudios = {};
 let playing = false;
@@ -354,13 +355,26 @@ function positionPopUpMenu() {
 
 // Button handlers
 async function handlePlayButtonClick() {
-    resetVariables();
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(savedSelection);
-    
-    console.log("Play button pressed");
-    
-    await sendAndRecieveEachChunk();
+    if(isPlaying == false && isPlayedOnce == false) {
+        isPlayedOnce = true;
+        resetVariables();
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(savedSelection);
+        
+        console.log("Play button pressed");
+        
+        await sendAndRecieveEachChunk();
+    }
+    else if (isPlaying == true && isPlayedOnce == true) {
+        pauseAllAudio();
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(savedSelection);
+    }
+    else if (isPlaying == false && isPlayedOnce == true) {
+        triggerPlayback();
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(savedSelection);
+    }
 }
 
 function handleSettingsButtonClick() {
@@ -480,12 +494,12 @@ const sendAndRecieveEachChunk = async() => {
 
 function resetVariables(){
     responseAudios = [];
+    playerIndex = 0;
 }
 
 async function triggerPlayback(){
     if (responseAudios !== null){
-        let playerIndex = 0
-        for (playerIndex = 0; playerIndex < responseAudios.length; playerIndex++) {
+        for (; playerIndex < responseAudios.length; playerIndex++) {
                 await new Promise((resolve) => {
                   responseAudios[playerIndex].onended = resolve;
                     isPlaying = true;
@@ -494,11 +508,14 @@ async function triggerPlayback(){
                 });
               }
         isPlaying = false;
+        isPlayedOnce = false;
         document.getElementById("playButton").innerHTML = "&#9658;";
     }
 }
 
 function pauseAllAudio() {
+    isPlaying = false;
+    playButton.innerHTML = "&#9658;";
     for (const audioElement of responseAudios) {
         audioElement.pause();
     }
