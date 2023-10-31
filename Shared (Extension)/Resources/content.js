@@ -526,12 +526,16 @@ function resetVariables(){
 async function triggerPlayback(){
     if (responseAudios !== null){
         for (; playerIndex < responseAudios.length; playerIndex++) {
+            if(responseAudios[playerIndex] != null){
                 await new Promise((resolve) => {
-                  responseAudios[playerIndex].onended = resolve;
+                    responseAudios[playerIndex].onended = resolve;
                     isPlaying = true;
                     document.getElementById("playButton").innerHTML = "&#10074;&#10074;";
-                  responseAudios[playerIndex].play();
+                    responseAudios[playerIndex].play();
                 });
+            } else {
+                continue;
+            }
               }
         isPlaying = false;
         isPlayedOnce = false;
