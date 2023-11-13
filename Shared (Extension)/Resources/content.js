@@ -95,8 +95,13 @@ body {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
   
 }
+
+  .toggle-checkbox + .toggle-switch {
+    background: #448aff;
+  }
+  
 .toggle-checkbox:checked + .toggle-switch {
-  background: #56c080;
+  background: #ff5252;
 }
 .toggle-checkbox:checked + .toggle-switch:before {
   left: 30px;
@@ -189,11 +194,13 @@ let settingsButton;
 let popUpMenu;
 let backdrop;
 let progressBar;
+let popup;
 
 let isPlayButtonVisible = false;
 let isSettingsButtonVisible = false;
 let isPopUpMenuVisible = false;
 let isPlayedOnce = false;
+let isPopupVisible = false;
 
 let responseAudios = {};
 let playing = false;
@@ -230,10 +237,18 @@ document.addEventListener("mouseup", function () {
 
 document.addEventListener("click", function (event) {
     const selectedText = window.getSelection().toString().trim();
-    if (event.target !== playButton && event.target !== settingsButton && isSettingsButtonVisible && isPlayButtonVisible && selectedText ==="") {
+    if (event.target !== settingsButton && isPopupVisible && !popup.contains(event.target)){
+        console.log(isPopupVisible);
+        hidePopup();
+    }
+    else if (event.target !== playButton && event.target !== settingsButton && isSettingsButtonVisible && isPlayButtonVisible && selectedText ==="" && !isPopupVisible) {
         hidePlayButton();
         hideSettingsButton();
         stopAllAudio();
+    }
+    if (popup.contains(event.target)){
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(savedSelection);
     }
 });
 
@@ -257,51 +272,66 @@ function showSettingsButton() {
     settingsButton.addEventListener("click", handleSettingsButtonClick);
 }
 
-function showPopUpMenu() {
-    console.log("Inside here");
-    popUpMenu = document.createElement("div");
-    popUpMenu.id = "popUpMenu";
-    popUpMenu.innerHTML = `
-  <h2> কণ্ঠ </h2>
-  
-  <label class="toggle">
-    <span class="toggle-label">পুরুষ </span>
-    <input class="toggle-checkbox" type="checkbox" "checked"
-    id="genderCheckbox">
-    <div class="toggle-switch"></div>
-    <span class="toggle-label">নারী </span>
-  </label>
-  
-  <hr>
-  
-  <div class="dropdown">
-    <button class="dropbtn">গতি </button>
-    <div class="dropdown-content">
-      <a>-২x</a>
-      <a>-১x</a>
-      <a>0x</a>
-      <a>১x</a>
-      <a>২x</a>
-    </div>
-  </div>
-  
-  <hr>
-  
-  <div class="dropdown">
-    <button class="dropbtn">পিচ </button>
-    <div class="dropdown-content">
-      <a>-২x</a>
-      <a>-১x</a>
-      <a>0x</a>
-      <a>১x</a>
-      <a>২x</a>
-    </div>
-  </div>
-`;
-    document.body.appendChild(popUpMenu);
-    isPopUpMenuVisible = true;
-    positionPopUpMenu();
+function showPopup() {
+    popup = document.createElement("div");
+    popup.id = "popup";
+    popup.innerHTML = `
+                        <h2> উচ্চারণ </h2>
+                        <label class = "toggle">
+                        <span class = "toggle-label"> পুরুষ </span>
+                        <input class = "toggle-checkbox" type="checkbox" id = "genderCheckbox">
+                        <div class = "toggle-switch"></div>
+                        <span class = "toggle-label"> নারী </span>
+                        </label>
+                        
+                        <hr>
+<!--
+                        <label class = "toggle">
+                        <span class = "toggle-label"> প্রাপ্তবয়স্ক </span>
+                        <input class = "toggle-checkbox" type="checkbox" id = "ageCheckbox">
+                        <div class = "toggle-switch"></div>
+                        <span class = "toggle-label"> অপ্রাপ্তবয়স্ক </span>
+                        </label>
+                        
+                        <hr>
+-->
+                        <div class = "dropdown">
+                        <button class = "dropbtn"> গতি ↓ </button>
+                        <div class = "dropdown-content">
+                            <a>-২x</a>
+                            <a>-১x</a>
+                            <a>০x</a>
+                            <a>১x</a>
+                            <a>২x</a>
+                        </div>
+                        </div>
+                        
+                        <hr>
+                        <div class = "dropdown">
+                        <button class = "dropbtn"> পিচ ↓ </button>
+                        <div class = "dropdown-content">
+                            <a>-২x</a>
+                            <a>-১x</a>
+                            <a>০x</a>
+                            <a>১x</a>
+                            <a>২x</a>
+                        </div>
+                        </div>
+                        `;
+    document.body.appendChild(popup);
+    positionPopup();
+    isPopupVisible = true;
 }
+
+//function showPopUpMenu() {
+//    popUpMenu = document.createElement("div");
+//    popUpMenu.id = "popUpMenu";
+//    popUpMenu.innerHTML = innerHTML = "&#9658;";
+//    document.body.appendChild(popUpMenu);
+//    console.log("Inside deep down");
+//    isPopUpMenuVisible = true;
+//    positionPopUpMenu();
+//}
 
 function showBackdrop() {
     backdrop = document.createElement("div");
@@ -324,6 +354,8 @@ function hidePlayButton() {
         playButton.remove();
         isPlayButtonVisible = false;
     }
+    const allSettingsButton = document.getElementById("settingsButton");
+    allSettingsButton.remove();
 }
 
 function hideSettingsButton() {
@@ -331,18 +363,34 @@ function hideSettingsButton() {
         settingsButton.remove();
         isSettingsButtonVisible = false;
     }
+    const allSettingsButton = document.getElementById("settingsButton");
+    allSettingsButton.remove();
 }
 
-function hidePopUpMenu() {
-    if (popUpMenu) {
-        popUpMenu.remove();
-        isPopUpMenuVisible = false;
+//function hidePopUpMenu() {
+//    if (popUpMenu) {
+//        popUpMenu.remove();
+//        isPopUpMenuVisible = false;
+//    }
+//}
+
+function hidePopup() {
+    if (popup) {
+        popup.remove();
+        isPopupVisible = false;
+    }
+}
+
+function hidePopupOnClickOutside(event) {
+    if (popup && !popup.contains(event.target)) {
+        hidePopup();
     }
 }
 
 function hideBackDrop() {
     document.getElementById("backdropId").remove();
 }
+
 
 function positionPlayButton() {
     const selectedRange = window.getSelection().getRangeAt(0);
@@ -359,15 +407,25 @@ function positionSettingsButton() {
     settingsButton.style.left = rect.left + window.scrollX + 35 + "px";
 }
 
-function positionPopUpMenu() {
+//function positionPopUpMenu() {
+//    const selectedRange = window.getSelection().getRangeAt(0);
+//    const rect = selectedRange.getBoundingClientRect();
+//    popUpMenu.style.top = rect.top + window.scrollY - 25 + "px";
+//    popUpMenu.style.left = rect.left + window.scrollX + 35 + "px";
+//}
+
+function positionPopup() {
     const selectedRange = window.getSelection().getRangeAt(0);
     const rect = selectedRange.getBoundingClientRect();
-    popUpMenu.style.top = rect.top + window.scrollY - 35 + "px";
-    popUpMenu.style.left = rect.left + window.scrollX + 70 + "px";
+    popup.style.top = rect.top + window.scrollY - 35 + "px";
+    popup.style.left = rect.left + window.scrollX + 70 + "px";
 }
 
 // Button handlers
 async function handlePlayButtonClick() {
+    if(isPopupVisible){
+        hidePopup();
+    }
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(savedSelection);
     let currentText = userText;
@@ -402,6 +460,12 @@ async function handlePlayButtonClick() {
 function handleSettingsButtonClick() {
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(savedSelection);
+    if(isPopupVisible){
+        hidePopup();
+    }
+    else if (!isPlaying){
+        showPopup();
+    }
 //    if (isPopUpMenuVisible) {
 //        hidePopUpMenu();
 //    } else {
