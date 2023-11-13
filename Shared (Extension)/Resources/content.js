@@ -201,6 +201,7 @@ let isSettingsButtonVisible = false;
 let isPopUpMenuVisible = false;
 let isPlayedOnce = false;
 let isPopupVisible = false;
+let genderChecked = false;
 
 let responseAudios = {};
 let playing = false;
@@ -279,7 +280,7 @@ function showPopup() {
                         <h2> উচ্চারণ </h2>
                         <label class = "toggle">
                         <span class = "toggle-label"> পুরুষ </span>
-                        <input class = "toggle-checkbox" type="checkbox" id = "genderCheckbox">
+                        <input class = "toggle-checkbox" type="checkbox" ${ genderChecked ? "checked" : ""}" id = "genderCheckbox">
                         <div class = "toggle-switch"></div>
                         <span class = "toggle-label"> নারী </span>
                         </label>
@@ -321,6 +322,17 @@ function showPopup() {
     document.body.appendChild(popup);
     positionPopup();
     isPopupVisible = true;
+    const checkbox = document.getElementById("genderCheckbox");
+    checkbox.addEventListener("change", function() {
+        if(checkbox.checked) {
+            console.log("Checked");
+            genderChecked = true;
+        }
+        else{
+            console.log("Not checked");
+            genderChecked = false;
+        }
+    })
 }
 
 //function showPopUpMenu() {
