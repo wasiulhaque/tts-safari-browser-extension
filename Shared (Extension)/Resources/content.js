@@ -280,7 +280,7 @@ function showPopup() {
                         <h2> উচ্চারণ </h2>
                         <label class = "toggle">
                         <span class = "toggle-label"> পুরুষ </span>
-                        <input class = "toggle-checkbox" type="checkbox" ${ genderChecked ? "checked" : ""}" id = "genderCheckbox">
+                        <input class = "toggle-checkbox" type="checkbox" ${genderChecked ? "checked" : ""} id = "genderCheckbox">
                         <div class = "toggle-switch"></div>
                         <span class = "toggle-label"> নারী </span>
                         </label>
