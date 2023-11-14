@@ -335,16 +335,6 @@ function showPopup() {
     })
 }
 
-//function showPopUpMenu() {
-//    popUpMenu = document.createElement("div");
-//    popUpMenu.id = "popUpMenu";
-//    popUpMenu.innerHTML = innerHTML = "&#9658;";
-//    document.body.appendChild(popUpMenu);
-//    console.log("Inside deep down");
-//    isPopUpMenuVisible = true;
-//    positionPopUpMenu();
-//}
-
 function showBackdrop() {
     backdrop = document.createElement("div");
     backdrop.id = "backdropId";
@@ -379,13 +369,6 @@ function hideSettingsButton() {
     allSettingsButton.remove();
 }
 
-//function hidePopUpMenu() {
-//    if (popUpMenu) {
-//        popUpMenu.remove();
-//        isPopUpMenuVisible = false;
-//    }
-//}
-
 function hidePopup() {
     if (popup) {
         popup.remove();
@@ -419,13 +402,6 @@ function positionSettingsButton() {
     settingsButton.style.left = rect.left + window.scrollX + 35 + "px";
 }
 
-//function positionPopUpMenu() {
-//    const selectedRange = window.getSelection().getRangeAt(0);
-//    const rect = selectedRange.getBoundingClientRect();
-//    popUpMenu.style.top = rect.top + window.scrollY - 25 + "px";
-//    popUpMenu.style.left = rect.left + window.scrollX + 35 + "px";
-//}
-
 function positionPopup() {
     const selectedRange = window.getSelection().getRangeAt(0);
     const rect = selectedRange.getBoundingClientRect();
@@ -441,10 +417,7 @@ async function handlePlayButtonClick() {
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(savedSelection);
     let currentText = userText;
-    
-//    console.log("Current: " + currentText)
-//    console.log("Previous: " + prevText)
-    
+
     if(isPlaying == false && currentText != prevText) {
         isPlayedOnce = true;
         resetVariables();
@@ -478,11 +451,6 @@ function handleSettingsButtonClick() {
     else if (!isPlaying){
         showPopup();
     }
-//    if (isPopUpMenuVisible) {
-//        hidePopUpMenu();
-//    } else {
-//        showPopUpMenu();
-//    }
 }
 
 function doesContainsBengaliWord(text){
