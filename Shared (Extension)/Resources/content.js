@@ -155,23 +155,24 @@ body {
 
   / popup.css (or your preferred CSS file) /
 
-.progress-bar {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #3498db;
-  border-radius: 50%;
-  animation: spin 2s linear infinite;
-}
+  .progress-bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+  }
 
-@keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
   `;
 
 const styleSheet = document.createElement("style");
@@ -188,6 +189,7 @@ let savedSelection;
 let prevText = "";
 let selectedText;
 let userText;
+let prevSelection = null;
 
 let playButton;
 let settingsButton;
@@ -202,6 +204,7 @@ let isPopUpMenuVisible = false;
 let isPlayedOnce = false;
 let isPopupVisible = false;
 let genderChecked = false;
+let changeFound = false;
 
 let responseAudios = {};
 let playing = false;
@@ -221,15 +224,38 @@ let playerIndex = 0;
 
 document.addEventListener("mouseup", function () {
     selectedText = window.getSelection().toString().trim();
+    if(prevSelection == null){
+        prevSelection = selectedText;
+    } else if(prevSelection !== selectedText){
+        changeFound = true;
+        prevSelection = selectedText;
+    } else {
+        changeFound = false;
+    }
     if (selectedText != ""){
-        if (doesContainsBengaliWord(selectedText)){
+        if (doesContainsBengaliWord(selectedText) && !isPlayButtonVisible){
             userText = selectedText;
             console.log(selectedText);
             showPlayButton(selectedText);
             showSettingsButton();
             browserText = selectedText;
             savedSelection = window.getSelection().getRangeAt(0).cloneRange();
-        } else {
+        } else if (changeFound){
+            if(isPlayButtonVisible){
+                hidePlayButton();
+                hideSettingsButton();
+                hidePopup();
+            }
+            if(isPlaying){
+                pauseAllAudio();
+            }
+            userText = selectedText;
+            showPlayButton(selectedText);
+            showSettingsButton();
+            browserText = selectedText;
+            savedSelection = window.getSelection().getRangeAt(0).cloneRange();
+        }
+        else {
             hidePlayButton();
             hideSettingsButton();
         }
@@ -336,20 +362,22 @@ function showPopup() {
 }
 
 function showBackdrop() {
-    backdrop = document.createElement("div");
-    backdrop.id = "backdropId";
-    backdrop.style.position = "fixed";
-    backdrop.style.top = "0";
-    backdrop.style.left = "0";
-    backdrop.style.width = "100%";
-    backdrop.style.height = "100%";
-    backdrop.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    backdrop.style.zIndex = "9999";
-    progressBar = document.createElement("div");
-    progressBar.className = "progress-bar";
-    backdrop.appendChild(progressBar);
-    document.body.appendChild(backdrop);
+  const backdrop = document.createElement("div");
+  backdrop.id = "backdropId";
+  backdrop.style.position = "fixed";
+  backdrop.style.top = "0";
+  backdrop.style.left = "0";
+  backdrop.style.width = "100%";
+  backdrop.style.height = "100%";
+  backdrop.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  backdrop.style.zIndex = "9999";
+
+  const progressBar = document.createElement("div");
+  progressBar.className = "progress-bar";
+  backdrop.appendChild(progressBar);
+  document.body.appendChild(backdrop);
 }
+
 
 function hidePlayButton() {
     if (playButton) {
@@ -365,8 +393,6 @@ function hideSettingsButton() {
         settingsButton.remove();
         isSettingsButtonVisible = false;
     }
-    const allSettingsButton = document.getElementById("settingsButton");
-    allSettingsButton.remove();
 }
 
 function hidePopup() {
