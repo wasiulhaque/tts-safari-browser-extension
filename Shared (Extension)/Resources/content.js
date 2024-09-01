@@ -13,6 +13,7 @@ const styles = `
       line-height: 30px;
       cursor: pointer;
       user-select: none;
+      outline: none;
     }
   
     #settingsButton {
@@ -270,8 +271,14 @@ document.addEventListener("mouseup", function () {
     }
 });
 
+
+
 document.addEventListener("click", function (event) {
     const selectedText = window.getSelection().toString().trim();
+    if (event.target === playButton){
+        const savedRange = saveSelection();
+        restoreSelection(savedRange);
+    }
     if (event.target !== settingsButton && isPopupVisible && !popup.contains(event.target)){
         console.log(isPopupVisible);
         hidePopup();
@@ -287,6 +294,22 @@ document.addEventListener("click", function (event) {
     }
 });
 
+function saveSelection() {
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        return selection.getRangeAt(0);
+    }
+    return null;
+}
+
+function restoreSelection(range) {
+    if (range) {
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
+
 function showPlayButton(selectedText) {
     playButton = document.createElement("div");
     playButton.id = "playButton";
@@ -298,6 +321,7 @@ function showPlayButton(selectedText) {
 }
 
 function showSettingsButton() {
+    console.log("Show settings button triggered");
     settingsButton = document.createElement("div");
     settingsButton.id = "settingsButton";
     settingsButton.innerHTML = "&#9881";
@@ -311,7 +335,7 @@ function showPopup() {
     popup = document.createElement("div");
     popup.id = "popup";
     popup.innerHTML = `
-                        <h2> উচ্চারণ </h2>
+                        <h2> কণ্ঠ </h2>
                         <label class = "toggle">
                         <span class = "toggle-label"> পুরুষ </span>
                         <input class = "toggle-checkbox" type="checkbox" ${genderChecked ? "checked" : ""} id = "genderCheckbox">
@@ -404,6 +428,7 @@ function hidePlayButton() {
 }
 
 function hideSettingsButton() {
+    console.log("Hidden triggered");
     if (settingsButton) {
         settingsButton.remove();
         isSettingsButtonVisible = false;
@@ -466,6 +491,8 @@ async function handlePlayButtonClick() {
         
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(savedSelection);
+        
+        hideSettingsButton();
         
         console.log("Play button pressed");
         
@@ -605,6 +632,7 @@ const sendAndRecieveEachChunk = async() => {
                 }
             } catch (error) {
                 console.error("Error: ", error);
+                showSettingsButton()
                 hideBackDrop();
                 resetVariables();
             }
@@ -648,13 +676,18 @@ async function triggerPlayback(){
         isPlayedOnce = false;
         prevText = "";
 //        document.getElementById("playButton").innerHTML = "&#9658;";
+        showSettingsButton()
         document.getElementById("playButton").style.backgroundImage = "url('https://i.postimg.cc/4NtfMRyK/Frame.png')";
+        console.log("Done and dusted");
+        console.log("Saved selection:", savedSelection)
     }
+    showSettingsButton()
 }
 
 function pauseAllAudio() {
     isPlaying = false;
-    playButton.innerHTML = "&#9658;";
+//    playButton.innerHTML = "&#9658;";
+    playButton.style.backgroundImage = "url('https://i.postimg.cc/4NtfMRyK/Frame.png')";
     for (const audioElement of responseAudios) {
         audioElement.pause();
     }
@@ -662,7 +695,8 @@ function pauseAllAudio() {
 
 function stopAllAudio() {
     isPlaying = false;
-    playButton.innerHTML = "&#9658;";
+//    playButton.innerHTML = "&#9658;";
+    playButton.style.backgroundImage = "url('https://i.postimg.cc/4NtfMRyK/Frame.png')";
     for (const audioElement of responseAudios) {
         audioElement.pause();
         audioElement.currentTime = 0;
