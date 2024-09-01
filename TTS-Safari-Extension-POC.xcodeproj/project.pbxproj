@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7FB47152C844D440063D3D5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7FB47142C844D440063D3D5 /* icon.png */; };
+		C7FB47162C844D440063D3D5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7FB47142C844D440063D3D5 /* icon.png */; };
 		C7FB4E702AEA17BA00E50D24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E6F2AEA17BA00E50D24 /* AppDelegate.swift */; };
 		C7FB4E722AEA17BA00E50D24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB4E712AEA17BA00E50D24 /* SceneDelegate.swift */; };
 		C7FB4E752AEA17BA00E50D24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FB4E732AEA17BA00E50D24 /* LaunchScreen.storyboard */; };
@@ -90,6 +92,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C7618CF42BFEE8A800A58F06 /* TTS-Safari-Extension-POC--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TTS-Safari-Extension-POC--macOS--Info.plist"; sourceTree = "<group>"; };
+		C7FB47142C844D440063D3D5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = images/icon.png; sourceTree = "<group>"; };
 		C7FB4E572AEA17B900E50D24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
 		C7FB4E582AEA17B900E50D24 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C7FB4E592AEA17B900E50D24 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 		C7FB4E4F2AEA17B900E50D24 = {
 			isa = PBXGroup;
 			children = (
+				C7618CF42BFEE8A800A58F06 /* TTS-Safari-Extension-POC--macOS--Info.plist */,
 				C7FB4E542AEA17B900E50D24 /* Shared (App) */,
 				C7FB4E5D2AEA17BA00E50D24 /* Shared (Extension) */,
 				C7FB4E6E2AEA17BA00E50D24 /* iOS (App) */,
@@ -205,6 +210,7 @@
 				C7FB4E622AEA17BA00E50D24 /* manifest.json */,
 				C7FB4E632AEA17BA00E50D24 /* background.js */,
 				C7FB4E642AEA17BA00E50D24 /* content.js */,
+				C7FB47142C844D440063D3D5 /* icon.png */,
 				C7FB4E652AEA17BA00E50D24 /* popup.html */,
 				C7FB4E662AEA17BA00E50D24 /* popup.css */,
 				C7FB4E672AEA17BA00E50D24 /* popup.js */,
@@ -416,6 +422,7 @@
 			files = (
 				C7FB4EAF2AEA17BA00E50D24 /* background.js in Resources */,
 				C7FB4EB52AEA17BA00E50D24 /* popup.css in Resources */,
+				C7FB47152C844D440063D3D5 /* icon.png in Resources */,
 				C7FB4EB32AEA17BA00E50D24 /* popup.html in Resources */,
 				C7FB4EAB2AEA17BA00E50D24 /* images in Resources */,
 				C7FB4EAD2AEA17BA00E50D24 /* manifest.json in Resources */,
@@ -431,6 +438,7 @@
 			files = (
 				C7FB4EB02AEA17BA00E50D24 /* background.js in Resources */,
 				C7FB4EB62AEA17BA00E50D24 /* popup.css in Resources */,
+				C7FB47162C844D440063D3D5 /* icon.png in Resources */,
 				C7FB4EB42AEA17BA00E50D24 /* popup.html in Resources */,
 				C7FB4EAC2AEA17BA00E50D24 /* images in Resources */,
 				C7FB4EAE2AEA17BA00E50D24 /* manifest.json in Resources */,
@@ -651,7 +659,7 @@
 				DEVELOPMENT_TEAM = GNC9ALL99U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -682,7 +690,7 @@
 				DEVELOPMENT_TEAM = GNC9ALL99U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -717,7 +725,8 @@
 				DEVELOPMENT_TEAM = GNC9ALL99U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -755,7 +764,8 @@
 				DEVELOPMENT_TEAM = GNC9ALL99U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -793,7 +803,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -825,7 +835,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -859,7 +869,9 @@
 				DEVELOPMENT_TEAM = GNC9ALL99U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC";
+				INFOPLIST_FILE = "TTS-Safari-Extension-POC--macOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -894,7 +906,9 @@
 				DEVELOPMENT_TEAM = GNC9ALL99U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension-POC";
+				INFOPLIST_FILE = "TTS-Safari-Extension-POC--macOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TTS-Safari-Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (

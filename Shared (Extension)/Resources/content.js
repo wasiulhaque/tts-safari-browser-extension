@@ -1,5 +1,9 @@
 const styles = `
-    #playButton, #settingsButton {
+    #playButton {
+      background-image: url('https://i.postimg.cc/4NtfMRyK/Frame.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       position: absolute;
       z-index: 9999;
       width: 30px;
@@ -10,7 +14,7 @@ const styles = `
       cursor: pointer;
       user-select: none;
     }
-
+  
     #settingsButton {
         position: absolute;
         z-index: 9999;
@@ -24,7 +28,7 @@ const styles = `
     }
   
     #playButton {
-      background-color: #3498db; / You can customize the play button's appearance /
+      background-color: #ffffff; / You can customize the play button's appearance /
       color: #fff; / You can customize the play button's appearance /
       font-size: 20px;
     }
@@ -175,6 +179,7 @@ body {
 
   `;
 
+
 const styleSheet = document.createElement("style");
 styleSheet.type = "text/css";
 styleSheet.innerText = styles;
@@ -197,6 +202,9 @@ let popUpMenu;
 let backdrop;
 let progressBar;
 let popup;
+
+let selectedGender = "male";
+let selectedSpeaker = "2";
 
 let isPlayButtonVisible = false;
 let isSettingsButtonVisible = false;
@@ -282,7 +290,7 @@ document.addEventListener("click", function (event) {
 function showPlayButton(selectedText) {
     playButton = document.createElement("div");
     playButton.id = "playButton";
-    playButton.innerHTML = isPlaying ? "&#10074;&#10074;" : "&#9658;";
+//    playButton.innerHTML = isPlaying ? "&#10074;&#10074;" : "&#9658;";
     document.body.appendChild(playButton);
     isPlayButtonVisible = true;
     positionPlayButton();
@@ -311,8 +319,9 @@ function showPopup() {
                         <span class = "toggle-label"> নারী </span>
                         </label>
                         
-                        <hr>
+                        
 <!--
+                        <hr>
                         <label class = "toggle">
                         <span class = "toggle-label"> প্রাপ্তবয়স্ক </span>
                         <input class = "toggle-checkbox" type="checkbox" id = "ageCheckbox">
@@ -322,6 +331,7 @@ function showPopup() {
                         
                         <hr>
 -->
+<!--
                         <div class = "dropdown">
                         <button class = "dropbtn"> গতি ↓ </button>
                         <div class = "dropdown-content">
@@ -344,6 +354,7 @@ function showPopup() {
                             <a>২x</a>
                         </div>
                         </div>
+-->
                         `;
     document.body.appendChild(popup);
     positionPopup();
@@ -353,10 +364,14 @@ function showPopup() {
         if(checkbox.checked) {
             console.log("Checked");
             genderChecked = true;
+            selectedGender = "female"
+            selectedSpeaker = "0";
         }
         else{
             console.log("Not checked");
             genderChecked = false;
+            selectedGender = "male";
+            selectedSpeaker = "2";
         }
     })
 }
@@ -527,15 +542,20 @@ const sendAndRecieveEachChunk = async() => {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        module: "backend_tts",
-                        submodule: "infer",
+                        index: "0",
+                        gender: selectedGender,
+                        speaker: selectedSpeaker,
+                        model: "vits",
                         text: wordChunk,
                     }),
                 };
                 try {
-                    const audioBlob = await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions).then(response => response.blob());
+                    const audioBlobJson = await fetch("https://dev.revesoft.com:9381/text_to_speech_socket", requestOptions).then(response => response.json());
+                    console.log(audioBlobJson);
                     
-                    if (audioBlob) {
+                    if (audioBlobJson) {
+                        const base64Audio = audioBlobJson.audio;
+                        const audioBlob = base64ToBlob(base64Audio, 'audio/wav');
                         const blobURL = URL.createObjectURL(await audioBlob);
                         const audioElement = new Audio(await blobURL);
                         responseAudios[chunk_index + index] = audioElement;
@@ -558,15 +578,19 @@ const sendAndRecieveEachChunk = async() => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    module: "backend_tts",
-                    submodule: "infer",
+                    index: "0",
+                    gender: selectedGender,
+                    speaker: selectedSpeaker,
+                    model: "vits",
                     text: chunk,
                 }),
             };
             try {
-                const audioBlob = await fetch("https://stt.bangla.gov.bd:9381/utils/", requestOptions).then(response => response.blob());
-                
-                if (audioBlob) {
+                const audioBlobJson = await fetch("https://dev.revesoft.com:9381/text_to_speech_socket", requestOptions).then(response => response.json());
+                console.log(audioBlobJson);
+                if (audioBlobJson) {
+                    const base64Audio = audioBlobJson.audio;
+                    const audioBlob = base64ToBlob(base64Audio, 'audio/wav');
                     const blobURL = URL.createObjectURL(await audioBlob);
                     const audioElement = new Audio(await blobURL);
                     responseAudios[chunk_index + index] = audioElement;
@@ -588,6 +612,18 @@ const sendAndRecieveEachChunk = async() => {
     }
 }
 
+function base64ToBlob(base64, mimeType) {
+    const byteCharacters = atob(base64);
+    const byteNumbers = new Array(byteCharacters.length);
+
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: mimeType });
+}
+
 function resetVariables(){
     responseAudios = [];
     playerIndex = 0;
@@ -600,7 +636,8 @@ async function triggerPlayback(){
                 await new Promise((resolve) => {
                     responseAudios[playerIndex].onended = resolve;
                     isPlaying = true;
-                    document.getElementById("playButton").innerHTML = "&#10074;&#10074;";
+//                    document.getElementById("playButton").innerHTML = "&#10074;&#10074;";
+                    document.getElementById("playButton").style.backgroundImage = "url('https://i.postimg.cc/63m6s9CZ/giffycanvas.gif')";
                     responseAudios[playerIndex].play();
                 });
             } else {
@@ -610,7 +647,8 @@ async function triggerPlayback(){
         isPlaying = false;
         isPlayedOnce = false;
         prevText = "";
-        document.getElementById("playButton").innerHTML = "&#9658;";
+//        document.getElementById("playButton").innerHTML = "&#9658;";
+        document.getElementById("playButton").style.backgroundImage = "url('https://i.postimg.cc/4NtfMRyK/Frame.png')";
     }
 }
 
